@@ -1,0 +1,10 @@
+---
+ByteIRC:
+  nick: wizbot-testing
+  leaves:
+  - Administrator
+  - Quote
+  rejoin: true
+  channel: "#twitterbot-testing"
+  server: irc.byteirc.net
+
