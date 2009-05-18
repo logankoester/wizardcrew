@@ -5,6 +5,7 @@ ByteIRC:
   - Administrator
   - Quote
   - LastFM
+  - Insulter
   rejoin: true
   channel: "#wizardcrew"
   server: irc.byteirc.net

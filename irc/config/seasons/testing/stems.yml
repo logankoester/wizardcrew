@@ -5,7 +5,8 @@ ByteIRC:
   - Administrator
   - Quote
   - LastFM
+  - Insulter
   rejoin: true
-  channel: "#twitterbot-testing"
+  channel: "#wizbot-testing"
   server: irc.byteirc.net
 
