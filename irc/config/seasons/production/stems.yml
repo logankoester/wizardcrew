@@ -4,6 +4,7 @@ ByteIRC:
   leaves:
   - Administrator
   - Quote
+  - LastFM
   rejoin: true
   channel: "#wizardcrew"
   server: irc.byteirc.net
