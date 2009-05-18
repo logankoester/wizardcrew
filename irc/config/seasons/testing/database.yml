@@ -1,7 +1,5 @@
---- 
-Example: 
-  username: root
-  adapter: mysql
-  host: localhost
-  database: example_database
-  password: ""
+---
+LastFM:
+  adapter: sqlite3
+  database: leaves/last_fm/data/testing.db
+
