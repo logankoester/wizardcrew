@@ -13,6 +13,6 @@ Twitter:
 Quote:
   class: Quote
   respond_to_private_messages: true
-LadstFM:
+LastFM:
   class: LastFM
 
