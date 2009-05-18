@@ -6,16 +6,26 @@ class Controller < Autumn::Leaf
   
   def np_command(stem, sender, reply_to, msg)
     if msg
-      u = User.find_by_nick(sender[:msg])
+      nick = msg
     else
-      u = User.find_by_nick(sender[:nick])
+      nick = sender[:nick]
     end
+    
+    u = User.find_by_nick(nick)
+    
     if u
       user = Scrobbler::User.new(u.username)
       track = user.recent_tracks.first
-      "#{u.nick} is now listening to: #{track.name} by #{track.artist}"
+      "#{nick} is listening to #{track.name} by #{track.artist}"
     else
-      "That user has not registered a LastFM username (use !lastfm)"
+      # Maybe it's a last.fm user rather than a nick
+      user = Scrobbler::User.new(nick)
+      track = user.recent_tracks.first
+      if track
+        "#{nick} is listening to #{track.name} by #{track.artist}"
+      else
+        "That user does not exist or has not scrobbled any tracks"
+      end
     end
   end
   
