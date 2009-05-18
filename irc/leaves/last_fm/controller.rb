@@ -11,7 +11,7 @@ class Controller < Autumn::Leaf
       nick = sender[:nick]
     end
     
-    u = User.find_by_nick(nick)
+    u = User.find_by_nick(nick.downcase)
     
     if u
       user = Scrobbler::User.new(u.username)
@@ -31,10 +31,10 @@ class Controller < Autumn::Leaf
   
   def lastfm_command(stem, sender, reply_to, msg)
     if msg
-      u = User.find_by_nick(sender[:nick])
+      u = User.find_by_nick(sender[:nick].downcase)
       u = User.new unless u
       
-      u.nick = sender[:nick]
+      u.nick = sender[:nick].downcase
       u.username = msg
       
       if u.save
