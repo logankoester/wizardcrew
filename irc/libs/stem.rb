@@ -699,6 +699,12 @@ module Autumn
         # true and record if it was already set to true. If it wasn't already
         # set to true, we know the broadcast hasn't gone out, so we send it out.
         broadcast :stem_ready, self if should_broadcast
+      else
+        @chan_mutex.synchronize do
+          @channel_members[arguments[:channel]][sender[:nick]] = :unvoiced
+          #TODO what should we do if we are in the middle of receiving NAMES replies?
+          #TODO can we assume that all new channel members are unvoiced?
+        end
       end
     end
     ann :irc_join_event, :stem_sync => true # So methods that synchronize can be guaranteed the channel variables are up to date
@@ -762,9 +768,13 @@ module Autumn
       meths = Hash.new
       logger.debug "<< " + comm
     
-      if comm =~ /^:(.+?)\s+NOTICE\s+(\S+)\s+:(.+?)[\r\n]$/
+      if comm =~ /^:(.+?)\s+NOTICE\s+(\S+)\s+:(.+?)[\r\n]*$/
         server, sender, msg = $1, $2, $3
         meths[:irc_server_notice] = [ self, server, sender, msg ]
+        return meths
+      elsif comm =~ /^NOTICE\s+(.+?)\s+:(.+?)[\r\n]*$/
+        sender, msg = $1, $2
+        meths[:irc_server_notice] = [ self, nil, sender, msg ]
         return meths
       elsif comm =~ /^ERROR :(.+?)[\r\n]*$/ then
         msg = $1
@@ -815,7 +825,7 @@ module Autumn
         when :quit then
           arguments = { }
         when :join then
-          arguments = { :channel => msg }
+          arguments = { :channel => (msg || arg_array.at(0)) }
           msg = nil
         when :part then
           arguments = { :channel => arg_array.at(0) }
