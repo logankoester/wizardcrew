@@ -15,4 +15,5 @@ Quote:
   respond_to_private_messages: true
 LastFM:
   class: LastFM
-
+Chicken:
+  class: Chicken
