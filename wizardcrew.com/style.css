@@ -1,0 +1,9 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+}
+
+div#container {
+	text-align: center;
+	margin-top: 5%;
+}
