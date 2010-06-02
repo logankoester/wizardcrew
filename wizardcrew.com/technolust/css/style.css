@@ -1,0 +1,58 @@
+/**************************************/
+/*              GLOBALS               */
+/**************************************/
+
+.hide {
+  display: none;
+}
+
+.center {
+  text-align: center;
+}
+
+body {
+  /* Background noise */
+  background: #191919 url(../images/noise.png);
+  color: #77a9d4;
+  font-size: 1.3em;
+}
+
+pre {
+  font-family:"Droid Sans Mono","Lucida Console","Andale Mono","Courier New","Courier",monospace;
+  font-size:12px;
+  font-style:normal;
+  font-weight:normal;
+  line-height:12px;
+}
+
+/**************************************/
+/*              HEADER                */
+/**************************************/
+h1 {
+  font-size: 6em;
+}
+
+/**************************************/
+/*            MAIN CONTENT            */
+/**************************************/
+#main-content {
+  min-height: 600px;
+}
+
+#dj {
+  font-size: 0.8em;
+  margin-top: 40px;
+  color: #77a9d4;
+}
+
+
+/**************************************/
+/*               FOOTER               */
+/**************************************/
+
+#footer {
+  float: right;
+}
+
+#footer h2 {
+}
