@@ -32,6 +32,22 @@ h1 {
   font-size: 6em;
 }
 
+#flyer {
+  background-image: url(../images/flyer-front-sidebar.jpg);
+  width: 280px;
+  height: 212px;
+  margin-top: 82px;
+}
+
+#flyer:hover {
+  background-image: url(../images/flyer-back-sidebar.jpg);
+}
+
+#warehouse-banner {
+  position: relative;
+  left: -19px;
+}
+
 /**************************************/
 /*            MAIN CONTENT            */
 /**************************************/
